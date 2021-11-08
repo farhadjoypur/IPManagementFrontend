@@ -66,9 +66,6 @@ export class DashboardComponent implements OnInit {
   getIpInfo(){
     this.userInfo = localStorage.getItem('userInfo');
     this.userInfo = JSON.parse(this.userInfo);
-    console.log(this.userInfo.name);
-    console.log(this.userInfo.email);
-    console.log(this.userInfo.userId);
     this.service.getIpInfos().subscribe(res=>{
       this.datas = res;
     });

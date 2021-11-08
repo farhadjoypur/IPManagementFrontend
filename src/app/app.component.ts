@@ -19,15 +19,13 @@ export class AppComponent {
   }
 
   logout(){
-    this.userInfo = localStorage.getItem('userInfo');
-    this.userInfo = JSON.parse(this.userInfo);
-    console.log(this.userInfo);
     this.service.logout(this.userInfo).subscribe(res=>{
       this.data = res;
       if (this.data.success === true){
         localStorage.removeItem('authToken');
         localStorage.removeItem('userInfo');
         this.router.navigate(['login']);
+        this.token = '';
       }
     });
   }
