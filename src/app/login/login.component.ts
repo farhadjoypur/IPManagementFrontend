@@ -41,10 +41,9 @@ export class LoginComponent implements OnInit {
       if (this.data.success === true){
         this.userInfo = {
           name:this.data.data.name,
-          email:this.data.data.email
+          email:this.data.data.email,
+          userId:this.data.data.userId
         };
-        console.log("Bangla Bhai");
-        console.log(this.userInfo);
         localStorage.setItem('authToken', this.data.data.accessToken);
         localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         this.router.navigate(['/']);

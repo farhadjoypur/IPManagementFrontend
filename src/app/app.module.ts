@@ -8,11 +8,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LogsComponent } from './logs/logs.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { HttpClientModule} from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { IplogsComponent } from './iplogs/iplogs.component';
+import { DataService} from "./service/data.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,11 @@ import { IplogsComponent } from './iplogs/iplogs.component';
     ToastrModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:DataService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
