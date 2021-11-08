@@ -42,4 +42,9 @@ export class DataService implements HttpInterceptor{
   updateIPData(data:any){
     return this.http.post(environment.baseUrl+'ip/updateIPData',data);
   }
+  logout(data:any){
+    console.log("data");
+    console.log(data);
+    return this.http.post(environment.baseUrl+'auth/logout',data);
+  }
 }

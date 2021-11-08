@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.service.loginUser(this.form.value).subscribe(res=>{
-      console.log(res);
       this.data = res;
       if (this.data.success === true){
         this.userInfo = {
