@@ -8,6 +8,7 @@ import {RegisterComponent} from "./register/register.component";
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AuthGuard } from "./auth.guard";
 import {IplogsComponent} from "./iplogs/iplogs.component";
+import {UpdateIpComponent} from "./update-ip/update-ip.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     component:RegisterComponent,
     path:'register',
+    canActivate:[AuthGuard]
+  },
+  {
+    component:UpdateIpComponent,
+    path:'update-ip/:id',
     canActivate:[AuthGuard]
   }
 ];

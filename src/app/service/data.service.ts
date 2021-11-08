@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { HttpInterceptor} from "@angular/common/http";
+import { HttpInterceptor, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService implements HttpInterceptor{
-
   constructor(private http:HttpClient) { }
 
   intercept(req:any, next:any){
@@ -29,7 +28,18 @@ export class DataService implements HttpInterceptor{
     return this.http.get(environment.baseUrl+'ip/getIpInfo',
       {headers: new HttpHeaders({'Authorization': 'Bearer '+localStorage.getItem('authToken')})});
   }
+  getIpLogs(){
+    return this.http.get(environment.baseUrl+'ip/getIpLogs',
+      {headers: new HttpHeaders({'Authorization': 'Bearer '+localStorage.getItem('authToken')})});
+  }
+  getIPInfoById(id:any){
+    return this.http.get(environment.baseUrl+'ip/getIPInfoById/'+id,
+      {headers: new HttpHeaders({'Authorization': 'Bearer '+localStorage.getItem('authToken')})});
+  }
   submitIPData(data:any){
     return this.http.post(environment.baseUrl+'ip/submitIPData',data);
+  }
+  updateIPData(data:any){
+    return this.http.post(environment.baseUrl+'ip/updateIPData',data);
   }
 }

@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { IplogsComponent } from './iplogs/iplogs.component';
 import { DataService} from "./service/data.service";
+import { UpdateIpComponent } from './update-ip/update-ip.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DataService} from "./service/data.service";
     RegisterComponent,
     DashboardComponent,
     LogsComponent,
-    IplogsComponent
+    IplogsComponent,
+    UpdateIpComponent
   ],
   imports: [
     BrowserModule,
