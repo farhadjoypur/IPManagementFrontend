@@ -43,7 +43,7 @@
       <div class="form-group">
         <label for="ipAddress">IP address</label>
         <div class="input-group">
-          <input formControlName="ip" [ngClass]="{'is-invalid':submitted && f.ip.errors}" id="ipAddress" class="form-control" type="text">
+          <input pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" formControlName="ip" [ngClass]="{'is-invalid':submitted && f.ip.errors}" id="ipAddress" class="form-control" type="text">
         </div>
         <div *ngIf="submitted && f.ip.errors" class="invalid-feedback">
           <div *ngIf="f.ip.errors.required">
