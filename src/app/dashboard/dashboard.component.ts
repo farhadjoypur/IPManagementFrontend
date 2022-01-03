@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   submitted= false;
   data:any;
   userInfo:any;
+  searchText:any;
 
   constructor(private service:DataService, private modalService: NgbModal, private formBuilder: FormBuilder, private toastr: ToastrService) { }
 
@@ -36,12 +37,13 @@ export class DashboardComponent implements OnInit {
   }
 
   submit(){
-    this.submitted = true;
     if (this.form.invalid){
       return;
     }
+    this.submitted = true;
     this.form.value.userId=this.userInfo.userId;
     this.service.submitIPData(this.form.value).subscribe(res=>{
+      this.submitted = false;
       this.data = res;
       this.modalService.dismissAll();
       this.getIpInfo();
@@ -50,7 +52,7 @@ export class DashboardComponent implements OnInit {
       }else {
         this.showSuccess(JSON.stringify(this.data.message), "Error");
       }
-      this.submitted = false;
+
       this.form.get('userId').reset();
       this.form.get('ip').reset();
       this.form.get('description').reset();

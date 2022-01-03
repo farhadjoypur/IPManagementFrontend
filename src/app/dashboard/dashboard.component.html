@@ -4,6 +4,10 @@
       <div class="m-lg-4 float-left">
         <h2 >IP list</h2>
       </div>
+      <div class="m-lg-4 float-left">
+        <input type=text placeholder="keyword" [(ngModel)]="searchText">
+      </div>
+
       <div class="m-lg-4 float-right">
         <a (click)="open(content)" class="btn btn-primary">Add IP</a>
       </div>
@@ -19,7 +23,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let ipData of this.datas; index as index">
+      <tr *ngFor="let ipData of this.datas | filter:searchText; index as index ">
         <th scope="row">{{ index+1 }}</th>
         <td>{{ ipData.user.name }}</td>
         <td>{{ ipData.ip }}</td>
@@ -61,7 +65,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-outline-dark">Save</button>
+        <button type="submit" class="btn btn-outline-dark">Save
+          <div *ngIf="submitted" class="spinner-border" role="status" style="width: 1rem;height: 1rem;">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </button>
       </div>
     </form>
   </div>

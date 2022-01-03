@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IplogsComponent } from './iplogs/iplogs.component';
 import { DataService} from "./service/data.service";
 import { UpdateIpComponent } from './update-ip/update-ip.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UpdateIpComponent } from './update-ip/update-ip.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2SearchPipeModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
